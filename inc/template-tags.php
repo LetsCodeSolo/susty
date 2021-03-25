@@ -43,7 +43,7 @@ if ( ! function_exists( 'susty_wp_posted_by' ) ) :
 		$byline = sprintf(
 			/* translators: %s: post author. */
 			esc_html_x( 'by %s', 'post author', 'susty' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+			'<span class="author vcard">' . esc_html( get_the_author() ) . '</span>'
 		);
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
@@ -119,6 +119,7 @@ if ( ! function_exists( 'susty_wp_post_thumbnail' ) ) :
 	 * element when on single views.
 	 */
 	function susty_wp_post_thumbnail() {
+		return;
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}

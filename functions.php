@@ -40,7 +40,7 @@ if ( ! function_exists( 'susty_setup' ) ) :
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
-		add_theme_support( 'post-thumbnails' );
+		//add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -164,4 +164,18 @@ function susty_dequeue_dashicons() {
 	if ( ! is_user_logged_in() ) {
 		wp_deregister_style( 'dashicons' );
 	}
+}
+
+// Fully Disable Gutenberg editor.
+add_filter('use_block_editor_for_post_type', '__return_false', 10);
+
+// Don't load Gutenberg-related stylesheets.
+add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
+
+function remove_block_css() {
+	wp_dequeue_style( 'wp-block-library' ); // WordPress core
+	wp_dequeue_style( 'wp-block-library-theme' ); // WordPress core
+	wp_dequeue_style( 'wc-block-style' ); // WooCommerce
+	wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
+	wp_dequeue_style( 'yarppRelatedCss' );	// Dequeue YARP CSS Style Sheet
 }
