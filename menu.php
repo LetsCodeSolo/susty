@@ -4,12 +4,13 @@ get_header();
 
 		<nav id="site-navigation" class="main-navigation">
 			<h1><?php esc_html_e( 'All SMS Messages and Quotes', 'susty' );?></h1>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
+			<ul>
+				<?php
+				wp_list_categories( array(
+					'title_li'   => '',
+				) );
+				?>
+			</ul>
 		</nav><!-- #site-navigation -->
 
 <?php
