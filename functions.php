@@ -179,3 +179,4 @@ function remove_block_css() {
 	wp_dequeue_style( 'storefront-gutenberg-blocks' ); // Storefront theme
 	wp_dequeue_style( 'yarppRelatedCss' );	// Dequeue YARP CSS Style Sheet
 }
+add_filter( 'yarpp_enqueue_related_style', '__return_false' );
